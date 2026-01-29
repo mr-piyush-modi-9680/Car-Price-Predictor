@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Price Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Car Price Predictor 🚗</h1>
+        <form action="/predict" method="POST">
+            <label for="name">Car Name:</label>
+            <input type="text" name="name" placeholder="Enter only correct Car name" required>
+
+            <label for="company">Company:</label>
+            <input type="text" name="company" placeholder="Enter only correct company name" required>
+
+            <label for="year">Year:</label>
+            <input type="number" name="year" placeholder="Enter Year in numerical Form" required>
+
+            <label for="kms_driven">KMs Driven:</label>
+            <input type="number" name="kms_driven" placeholder="Enter only Numbers" required>
+
+            <label for="fuel_type">Fuel Type:</label>
+            <select name="fuel_type" required>
+                <option value="Petrol">Petrol</option>
+                <option value="Diesel">Diesel</option>
+                <option value="CNG">CNG</option>
+            </select>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction_text %}
+            <h2>{{ prediction_text }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
